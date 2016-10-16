@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://appvet.github.io/appvet/schemas" xmlns="http://appvet.github.io/appvet/schemas"
+	elementFormDefault="qualified">
+
+	<xs:element name="AppetStressTest">
+		<xs:annotation>
+			<xs:documentation>The AppVet element defines the properties of an
+				AppVet
+				system.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<!-- Configure the runtime development environment -->
+
+
+				<xs:element name="AppvetURL" type="xs:anyURI"
+					maxOccurs="1" minOccurs="1">
+					<xs:annotation>
+						<xs:documentation>
+							The URL of the AppVet service.
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="AppvetURLPort" type="xs:string"
+					maxOccurs="1" minOccurs="1">
+					<xs:annotation>
+						<xs:documentation>
+							The port of the AppVet URL.
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+
+				<xs:element name="Username" type="xs:string"
+					maxOccurs="1" minOccurs="1">
+					<xs:annotation>
+						<xs:documentation>
+							The username for the AppVet service.
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+
+				<xs:element name="Password" type="xs:string"
+					maxOccurs="1" minOccurs="1">
+					<xs:annotation>
+						<xs:documentation>
+							The password for the AppVet service.
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="AppsDirectory" type="xs:string"
+					maxOccurs="1" minOccurs="1">
+					<xs:annotation>
+						<xs:documentation>
+							The directory from which to select apps.
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="AppType" type="xs:string" maxOccurs="1" minOccurs="1">
+					<xs:annotation>
+						<xs:documentation>The type of apps to submit (ANDROID, IOS, BOTH).</xs:documentation>
+					</xs:annotation></xs:element>
+				<xs:element name="SubmissionDelay" type="xs:int"
+					maxOccurs="1" minOccurs="1">
+					<xs:annotation>
+						<xs:documentation>
+							The delay (in milliseconds) between app
+							submissions.
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+
+
+				<xs:element name="MaxApps" type="xs:int" maxOccurs="1"
+					minOccurs="1">
+					<xs:annotation>
+						<xs:documentation>
+							The maximum number of apps to be submitted.
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+
+				<xs:element name="LogLevel" type="xs:string"
+					maxOccurs="1" minOccurs="1">
+					<xs:annotation>
+						<xs:documentation>
+							The log level ("DEBUG", "INFO", "WARNING",
+							"ERROR").
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+
+
+
+
+			</xs:sequence>
+
+		</xs:complexType>
+	</xs:element>
+
+
+	<xs:complexType name="UserParamsType">
+		<xs:sequence>
+			<xs:element name="UserNameParamName" type="xs:string"
+				maxOccurs="1" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						The name of the HTTP header containing the SSO
+						username parameter name.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="PasswordParamName" type="xs:string"
+				maxOccurs="1" minOccurs="0">
+			</xs:element>
+			<xs:element name="LastNameParamName" type="xs:string"
+				maxOccurs="1" minOccurs="0">
+			</xs:element>
+			<xs:element name="FirstNameParamName" type="xs:string"
+				maxOccurs="1" minOccurs="0">
+			</xs:element>
+			<xs:element name="OrganizationParamName" type="xs:string"
+				maxOccurs="1" minOccurs="0">
+			</xs:element>
+			<xs:element name="DepartmentParamName" type="xs:string"
+				maxOccurs="1" minOccurs="0">
+			</xs:element>
+			<xs:element name="EmailParamName" type="xs:string"
+				maxOccurs="1" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						The name of the HTTP header containing the SSO
+						email parameter name. This is the only parameter
+						that is required
+						to achieve SSO for AppVet. In cases
+						where UserNameParamName is not
+						available, the
+						user's email is used as the username.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="PhoneParamName" type="xs:string"
+				maxOccurs="1" minOccurs="0"></xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+
+	<xs:simpleType name="AppVetUserParamType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="USERNAME" />
+			<xs:enumeration value="PASSWORD" />
+			<xs:enumeration value="EMAIL" />
+			<xs:enumeration value="LASTNAME" />
+			<xs:enumeration value="FIRSTNAME" />
+			<xs:enumeration value="PHONE" />
+			<xs:enumeration value="ORGANIZATION" />
+			<xs:enumeration value="DEPARTMENT" />
+			<xs:enumeration value="ROLE" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="LevelType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="DEBUG" />
+			<xs:enumeration value="INFO" />
+			<xs:enumeration value="WARNING" />
+			<xs:enumeration value="ERROR" />
+		</xs:restriction>
+	</xs:simpleType>
+
+
+
+	<xs:complexType name="AndroidType">
+		<xs:sequence>
+			<xs:element name="MinSDK" type="xs:int" maxOccurs="1"
+				minOccurs="1"></xs:element>
+			<xs:element name="TargetSDK" type="xs:int" maxOccurs="1"
+				minOccurs="1"></xs:element>
+			<xs:element name="MaxSDK" type="xs:int" maxOccurs="1"
+				minOccurs="0"></xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+
+
+	<xs:complexType name="ServicesMgrType">
+		<xs:sequence>
+			<xs:element name="ConnectionTimeout" type="xs:int"
+				maxOccurs="1" minOccurs="1"></xs:element>
+			<xs:element name="SocketTimeout" type="xs:int" maxOccurs="1"
+				minOccurs="1"></xs:element>
+			<xs:element name="Timeout" type="xs:int" maxOccurs="1"
+				minOccurs="1"></xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+
+	
+
+	<xs:complexType name="AdminType">
+		<xs:sequence>
+			<!-- Default admin username and password. -->
+			<xs:element name="Username" type="xs:string" maxOccurs="1"
+				minOccurs="1">
+			</xs:element>
+			<xs:element name="Password" type="xs:string" maxOccurs="1"
+				minOccurs="1">
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+
+
+
+</xs:schema>

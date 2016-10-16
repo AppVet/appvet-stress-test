@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AppetStressTest xmlns="http://appvet.github.io/appvet/schemas"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://appvet.github.io/appvet/schemas AppvetStressTestProperties.xsd ">
+
+
+	<!-- The environment variable APPVET_STRESSTEST_HOME must be set. -->
+	<!-- On RedHat, add environment variable to /etc/profile and visudo. -->
+	
+	
+	<!--The URL of the AppVet server -->
+	<AppvetURL>http://www.example.com</AppvetURL>
+
+	<!--The port of the AppVet server -->
+	<AppvetURLPort>8080</AppvetURLPort>
+
+	<!--The username for the AppVet server -->
+	<Username>johndoe</Username>
+
+	<!--The password for the AppVet server -->
+	<Password>JoHnDoE</Password>
+	
+	<!--A directory of apps. This directory should not have any subdirectories. -->
+	<AppsDirectory>/home/johndoe/myapps</AppsDirectory>
+	
+	<!--The type of apps to submit [ANDROID | IOS | BOTH] -->
+	<AppType>BOTH</AppType>
+	
+	<!--The delay between apps (in milliseconds). This value must be greater than 0. -->
+	<SubmissionDelay>0</SubmissionDelay>
+	
+	<!--The maximum number of random apps to send. This value must be greater than 0. -->
+	<MaxApps>1</MaxApps>
+	
+	<!--The log level [DEBUG | INFO | WARNING | ERROR] -->
+	<LogLevel>DEBUG</LogLevel>
+	
+</AppetStressTest>
